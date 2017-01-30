@@ -1,0 +1,117 @@
+body {
+  background-color: green;
+}
+
+.board {
+  background-color: black;
+  border-style: solid;
+  width: 1500px;
+  height: 1500px;
+  margin: 0 auto;
+  font-size: 30px;
+
+
+}
+
+.cellN{
+  width: 90px;
+  height: 90px;
+  background-color: 	#778899;
+  display: inline-block;
+  border-style: dotted;
+}
+
+.cellG {
+  width: 90px;
+  height: 90px;
+  background-color: darkgreen;
+  display: inline-block;
+  border-style: dotted;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  vertical-align: top;
+
+}
+
+.cellB {
+  width: 90px;
+  height: 90px;
+  background-color: #1E90FF;
+  display: inline-block;
+  border-style: dotted;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  vertical-align: top;
+}
+
+.cellY {
+  width: 90px;
+  height: 90px;
+  background-color: #FF8C00;
+  display: inline-block;
+  border-style: dotted;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  vertical-align: top;
+}
+
+.cellR {
+  width: 90px;
+  height: 90px;
+  background-color: red;
+  display: inline-block;
+  border-style: dotted;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  vertical-align: top;
+}
+
+.cellS {
+  width: 90px;
+  height: 90px;
+  background-color: pink;
+  display: inline-block;
+  border-style: dotted;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  vertical-align: top;
+}
+
+.scoreboard {
+  font-size: 22px;
+  color: white;
+  width: 300px;
+  height: 200px;
+  border-radius: 20px;
+  background-color: black;
+  float: left;
+}
+
+.tile {
+  width: 90px;
+  height: 90px;
+  background-color: white;
+  display: inline-block;
+  border-style: solid;
+  color: black;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  vertical-align: top;
+}
+
+.tileholder {
+  margin: 0 auto;
+  padding-left: 30%;
+  padding-top: 10%;
+}
