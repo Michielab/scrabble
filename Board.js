@@ -42,6 +42,8 @@ for(var i = 0; i < boardGrid.length; i++) {
   }
 
 
+
+
 function Game (tiles) {
   this.tiles = [];
   this.blankTile = [];
@@ -85,45 +87,67 @@ Game.prototype.shuffleTiles = function (array) {
 };
 
 Game.prototype.takeTile = function () {
-   document.getElementById("tilesleft").innerHTML = "Tiles left " + tiles.length;
+
    var randomTile = Game.prototype.shuffleTiles(tiles).pop();
    if (tiles.length === 0) {
      alert('There are no more tiles left!');}
+    document.getElementById("tilesleft").innerHTML = "Tiles left " + tiles.length;
    return randomTile;
 };
 
-Game.prototype.fillTilesHolder = function () {
-   while (tilesHolderPlayerOne.length < 7) {
-    tilesHolderPlayerOne.push(Game.prototype.takeTile());}
-   return tilesHolderPlayerOne;
-};
+// Game.prototype.fillTilesHolder = function () {
+//    while (tilesHolderPlayerOne.length < 7) {
+//     tilesHolderPlayerOne.push(Game.prototype.takeTile());}
+//    return tilesHolderPlayerOne;
+// };
+
 
 Game.prototype.CreateTilesHolder = function () {
-   for (var i = 0; i < tilesHolderPlayerOne.length; i++) {
-   var tile = $("<span>").addClass('tile').attr('draggable','true').attr('ondragstart','drag(event)').text(tilesHolderPlayerOne[i]);
+   for (var i = 0; i < 7; i++) {
+   var tile = $("<span>").addClass('tile').attr( 'id', 'tilesnummer' + [i] + [i + 1] ).attr('draggable','true').attr('ondragstart','drag(event)').text(Game.prototype.takeTile());
       $('.tileholder').append(tile);
 
   }
-  $( ".tile" ).on( "click", function() {
-   var moveTile = $(this).detach();
-   moveTile.appendTo('click').on( "click", function(){});
-  });
+
 };
 
 
+
+
+
+
+// function allowDrop(event) {
+//     event.preventDefault();
+// }
+//
+// function drag(event) {
+//     event.dataTransfer.setData("text", event.target.className);
+// }
+//
+// function drop(event) {
+//     event.preventDefault();
+//     var data = event.dataTransfer.getData("text");
+//     event.target.appendChild(document.getElementsByClassName(data)[0]);
+// }
+
+
 function allowDrop(ev) {
-    ev.preventDefault();
-}
+        ev.preventDefault();
+    }
 
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.class);
-}
+    function drag(ev) {
+        ev.dataTransfer.setData("dragged-id", ev.target.id);
 
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementsByClassName(data));
-}
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("dragged-id");
+        ev.target.appendChild(document.getElementById(data));
+    }
+
+
+
 
 
 
@@ -151,8 +175,10 @@ function drop(ev) {
 // <img id="drag1" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
 //
 //
-
-
+//
+// $( ".tile" ).on( "click", function() {
+//  var moveTile = $(this).detach();
+//  moveTile.appendTo('click').on( "click", function(){});
 
 
 
