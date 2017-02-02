@@ -1,16 +1,54 @@
 body {
-  background-color: green;
+  background-color: black;
+
 }
 
 .board {
+  padding-top: 5%;
   background-color: black;
-  border-style: solid;
-  width: 1500px;
+  width: 1600px;
   height: 1500px;
   margin: 0 auto;
   font-size: 30px;
+}
+#titles
+{
+	position: absolute;
+	width: 18em;
+	height: 50em;
+	bottom: 0;
+	left: 50%;
+	margin-left: -9em;
+	font-size: 350%;
+	font-weight: bold;
+	text-align: justify;
+	overflow: hidden;
+	transform-origin: 50% 100%;
+	transform: perspective(300px) rotateX(25deg);
+}
 
+#titles:after
+{
+	position: absolute;
+	content: ' ';
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 60%;
+	background-image: linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);
+	pointer-events: none;
+}
 
+#titlecontent
+{
+	position: absolute;
+	top: 100%;
+	animation: scroll 100s linear 4s infinite;
+}
+
+@keyframes scroll {
+	0% { top: 100%; }
+	100% { top: -170%; }
 }
 
 .cellN{
@@ -18,7 +56,8 @@ body {
   height: 90px;
   background-color: 	#778899;
   display: inline-block;
-  border-style: dotted;
+  border-style: ridge;
+  vertical-align: top;
 }
 
 .cellG {
@@ -26,10 +65,10 @@ body {
   height: 90px;
   background-color: darkgreen;
   display: inline-block;
-  border-style: dotted;
+  border-style: ridge;
   color: white;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: top;
   line-height: 90px;
   vertical-align: top;
 
@@ -40,7 +79,7 @@ body {
   height: 90px;
   background-color: #1E90FF;
   display: inline-block;
-  border-style: dotted;
+  border-style: ridge;
   color: white;
   text-align: center;
   vertical-align: middle;
@@ -53,7 +92,7 @@ body {
   height: 90px;
   background-color: #FF8C00;
   display: inline-block;
-  border-style: dotted;
+  border-style: ridge;
   color: white;
   text-align: center;
   vertical-align: middle;
@@ -66,12 +105,13 @@ body {
   height: 90px;
   background-color: red;
   display: inline-block;
-  border-style: dotted;
+  border-style: ridge;
   color: white;
   text-align: center;
   vertical-align: middle;
   line-height: 90px;
   vertical-align: top;
+  text-shadow:
 }
 
 .cellS {
@@ -79,7 +119,7 @@ body {
   height: 90px;
   background-color: pink;
   display: inline-block;
-  border-style: dotted;
+  border-style: ridge;
   color: white;
   text-align: center;
   vertical-align: middle;
@@ -94,7 +134,9 @@ body {
   height: 200px;
   border-radius: 20px;
   background-color: black;
-  float: left;
+  position: fixed;
+  bottom: 40%;
+  left: 80%;
 }
 
 .tile {
@@ -102,7 +144,6 @@ body {
   height: 90px;
   background-color: white;
   display: inline-block;
-  border-style: solid;
   color: black;
   text-align: center;
   vertical-align: middle;
@@ -110,8 +151,108 @@ body {
   vertical-align: top;
 }
 
+.blank {
+  width: 90px;
+  height: 90px;
+  background-color: white;
+  display: inline-block;
+  color: black;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  vertical-align: top;
+}
+
+button {
+  min-width: 245px;
+  height: 100px;
+  border-radius: 10px;
+  font-size: 80px;
+  background-color: white;
+  font-size: 40px;
+  bottom: 60%;
+  left: 10%;
+  border-radius: 10px;
+
+}
+
+.player1 {
+  position: fixed;
+  background-color: white;
+  height: 805px;
+  width: 500px;
+  top: 10%;
+  bottom: 50%;
+  left: 8%;
+  border-radius: 10px;
+
+}
+
+.player2 {
+  position: fixed;
+  background-color: white;
+  top: 10%;
+  height: 805px;
+  width: 500px;
+  border-radius: 10px;
+  bottom: 50%;
+  left: 75%;
+}
+
+img {
+ width: 500px;
+ height: 500px;
+}
+
+#scoreplayer1container{
+  background-color: #24fe9f;
+  height: 100px;
+  border-radius: 10px;
+  font-size: 80px;
+}
+
+#scoreplayer2container{
+  background-color: red;
+  height: 100px;
+  border-radius: 10px;
+  font-size: 80px;
+}
+/*#hidetiles {
+  bottom: 80%;
+  left: 10%;
+}
+
+#cplayer1{
+  bottom: 70%;
+  left: 10%;
+}
+
+
+
+#cplayer2{
+  bottom: 70%;
+  left: 80%;
+}
+
+
+#hidetilesplayer2{
+  bottom: 80%;
+  left: 80%;
+}
+
+#lettersPlayer2 {
+  bottom: 60%;
+  left: 80%;
+}*/
+
 .tileholder {
   margin: 0 auto;
-  padding-left: 30%;
-  padding-top: 10%;
+  padding-left: 40%;
+
+}
+
+.tileholderPlayerTwo {
+  margin: 0 auto;
+  padding-left: 40%;
+
 }
