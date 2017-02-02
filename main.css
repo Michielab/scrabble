@@ -19,7 +19,7 @@ body {
 	bottom: 0;
 	left: 50%;
 	margin-left: -9em;
-	font-size: 350%;
+	font-size: 300px;
 	font-weight: bold;
 	text-align: justify;
 	overflow: hidden;
@@ -39,17 +39,7 @@ body {
 	pointer-events: none;
 }
 
-#titlecontent
-{
-	position: absolute;
-	top: 100%;
-	animation: scroll 100s linear 4s infinite;
-}
 
-@keyframes scroll {
-	0% { top: 100%; }
-	100% { top: -170%; }
-}
 
 .cellN{
   width: 90px;
@@ -248,6 +238,7 @@ img {
 .tileholder {
   margin: 0 auto;
   padding-left: 40%;
+
 
 }
 

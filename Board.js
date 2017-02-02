@@ -38,6 +38,9 @@ var posGrid = [
 
 ];
 
+// var checkWord = require('check-word');
+// words     = checkWord('en');
+// console.log(words.check('perro'));
 // 'n' = 'normal cell';
 // 'G' = 'double letter cell';
 // 'B' = 'tripple letter cell';
@@ -48,12 +51,12 @@ var posGrid = [
 for(var i = 0; i < boardGrid.length; i++) {
     var boardGrids = boardGrid[i];
     for(var j = 0; j < boardGrids.length; j++) {
-        var cellN = $("<div>").addClass('cellN').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)');
-        var cellG = $("<div>").addClass('cellG').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)');
-        var cellB = $("<div>").addClass('cellB').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)');
-        var cellY = $("<div>").addClass('cellY').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)');
-        var cellR = $("<div>").addClass('cellR').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)');
-        var cellS = $("<div>").addClass('cellS').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)');
+        var cellN = $("<div>").addClass('cellN').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)')
+        var cellG = $("<div>").addClass('cellG').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)').text('DL');
+        var cellB = $("<div>").addClass('cellB').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)').text('TL');
+        var cellY = $("<div>").addClass('cellY').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)').text('DW');
+        var cellR = $("<div>").addClass('cellR').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)').text('TW');
+        var cellS = $("<div>").addClass('cellS').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)').text('S');
         if (boardGrid[i][j] === 'n') {$('.board').append(cellN.attr('id', i+'-'+j));}
         else if (boardGrid[i][j] === 'G') {$('.board').append(cellG.attr('id', i+'-'+j));}
         else if (boardGrid[i][j] === 'B') {$('.board').append(cellB.attr('id', i+'-'+j));}
@@ -91,11 +94,11 @@ Game.prototype.drawTileToStart = function() {
 
 
 $( "#hidetiles" ).click(function() {
-  $( ".tileholder" ).toggle( "slow" );
+  $( ".tileholder" ).toggle("slide", {direction: "left" }, 1000);
 });
 
 $( "#hidetilesplayer2" ).click(function() {
-  $( ".tileholderPlayerTwo" ).toggle( "slow");
+  $( ".tileholderPlayerTwo" ).toggle("slide", {direction: "right" }, 1000);
 });
 
 Game.prototype.shuffleTiles = function(array) {
@@ -160,7 +163,14 @@ Game.prototype.tileholderPlayerTwo = function() {
         Game.prototype.RandomLetters() ).attr('draggable','true').attr('ondragstart','drag(event)').text(Game.prototype.takeTile());
         $('.tileholderPlayerTwo').append(newTile);
         // if(document.getElementsByClassName('tile')[i].textContent === '?')
-        // {document.getElementsByClassName('tile')[i].className('blank');}
+        // {$('.tile').addClass('blank');}
+
+
+        // if(document.getElementsByClassName('tile')[i].textContent === '?')
+        // {var newBlankTile = $("<span>").addClass('blank').attr( 'id', 'tilesnumber' +
+        //   Game.prototype.RandomLetters() ).attr('draggable','true').attr('ondragstart','drag(event)');
+        //   $('.tileholder').append(newBlankTile);
+        //     $(newBlankTile).click(chooseLetter);}
    }
 
 };
@@ -195,9 +205,11 @@ var chooseLetter = function(event) {
     function allowDrop(ev) {
     for(var i = 0; i < boardGrid.length; i++) {
     var boardGrids = boardGrid[i];
-    for(var j = 0; j < boardGrids.length; j++) {if(ev.target.className == 'cellS')
-    ev.preventDefault();} }
-
+    for(var j = 0; j < boardGrids.length; j++) {
+      if(posGrid[i][j] === f) {if(ev.target.className === 'cellS' ){
+      ev.preventDefault();}}
+      else {ev.preventDefault()}}}}
+// ev.preventDefault();}
 
     function drag(ev) {
         ev.dataTransfer.setData("dragged-id", ev.target.id);
@@ -211,23 +223,25 @@ var chooseLetter = function(event) {
 
 var idParentDiv = '';
 var checkWordLeftToRightArray = [];
-
+var arrayRedCel = [];
+    wordsArray = [];
     function drop(ev) {
         ev.preventDefault();
 
         var data = ev.dataTransfer.getData("dragged-id");
         var valueSpanElement = ev.dataTransfer.getData("value");
         idParentDiv = ev.target.id ;
+        ev.target.textContent = '';
         ev.target.appendChild(document.getElementById(data));
         var valueRightSpanElement = '';
         idParentDivSplit = idParentDiv.split('-');
-
          posGrid[parseInt(idParentDivSplit[0])][parseInt(idParentDivSplit[1])] = valueSpanElement;
          checkWordLeftToRightArray.push(idParentDivSplit);
-
+        if(ev.target.className === 'cellR') {arrayRedCel.push(3) ;console.log(arrayRedCel);}
+        else if (ev.target.className === 'cellG') {wordsArray.push(valueSpanElement) ;console.log(valueSpanElement);}
+        else if (ev.target.className === 'cellB') {wordsArray.push(valueSpanElement);wordsArray.push(valueSpanElement);console.log(valueSpanElement);}
 }
 
-wordsArray = [];
 wordCheck = '';
 
 function checkLeftToRight(){
@@ -409,21 +423,40 @@ return score;
 
 function pointsToScore(){
 totalScorePlayerOne = checkScore();
+// if (arrayRedCel.length === 1) {return totalScorePlayerOne * 3;}
 pointsPlayerOne = parseInt(document.getElementById('scoreplayer1').textContent) + totalScorePlayerOne;
 document.getElementById('scoreplayer1').innerHTML = pointsPlayerOne;
-
+return pointsPlayerOne;
 }
 
 function pointsToScorePlayerTwo(){
 var totalScorePlayerTwo = checkScorePlayerTwo();
 var pointsPlayerTwo = parseInt(document.getElementById('scoreplayer2').textContent) + totalScorePlayerTwo;
 document.getElementById('scoreplayer2').innerHTML = pointsPlayerTwo;
-
+return pointsPlayerTwo;
 }
 
 function challange(){
-
+  var scoreNew = parseInt(document.getElementById('scoreplayer2').textContent);
+  var scoreNewPlayerOne = parseInt(document.getElementById('scoreplayer1').textContent);
+      var wordCorrect =  prompt('Is the word correct?');
+      if(wordCorrect === 'no') {
+  document.getElementById('scoreplayer2').innerHTML =  scoreNew - score;
+  document.getElementById('scoreplayer1').innerHTML =  scoreNewPlayerOne + score;}
+  else if (wordCorrect === 'yes') {
+document.getElementById('scoreplayer1').innerHTML =  scoreNew - score;
 }
+}
+
+  function challangeTwo(){
+    var scoreNew = parseInt(document.getElementById('scoreplayer1').textContent);
+    var scoreNewTwo = parseInt(document.getElementById('scoreplayer2').textContent);
+        var wordCorrect =  prompt('Is the word correct?');
+        if(wordCorrect === 'no') {
+    document.getElementById('scoreplayer1').innerHTML =  scoreNew - score;
+    document.getElementById('scoreplayer2').innerHTML = scoreNewTwo + score;}
+     else if (wordCorrect === 'yes') {
+  document.getElementById('scoreplayer2').innerHTML =  scoreNewTwo - score;}}
 
 // function onlyUnique(value, index, self) {
 //     return self.indexOf(value) === index;
