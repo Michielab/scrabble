@@ -6,10 +6,10 @@ body {
 .board {
   padding-top: 5%;
   background-color: black;
-  width: 1600px;
-  height: 1500px;
+  width: 700px;
+  height: 700px;
   margin: 0 auto;
-  font-size: 30px;
+  font-size: 15px;
 }
 
 /*#title {
@@ -17,9 +17,8 @@ body {
  position: fixed;
  left: 800px;
  right: 800px;
-}*/
-
-/*#title
+}*7
+7/*#title
 {
   font-size: 100px;
   position: fixed;
@@ -64,8 +63,8 @@ body {
 
 
 .cellN{
-  width: 90px;
-  height: 90px;
+  width: 40px;
+  height: 40px;
   background-color: 	#778899;
   display: inline-block;
   border-style: ridge;
@@ -73,69 +72,69 @@ body {
 }
 
 .cellG {
-  width: 90px;
-  height: 90px;
+  width: 40px;
+  height: 40px;
   background-color: darkgreen;
   display: inline-block;
   border-style: ridge;
   color: white;
   text-align: center;
   vertical-align: top;
-  line-height: 90px;
+  line-height: 40px;
   vertical-align: top;
 
 }
 
 .cellB {
-  width: 90px;
-  height: 90px;
+  width: 40px;
+  height: 40px;
   background-color: #1E90FF;
   display: inline-block;
   border-style: ridge;
   color: white;
   text-align: center;
   vertical-align: middle;
-  line-height: 90px;
+  line-height: 40px;
   vertical-align: top;
 }
 
 .cellY {
-  width: 90px;
-  height: 90px;
+  width: 40px;
+  height: 40px;
   background-color: #FF8C00;
   display: inline-block;
   border-style: ridge;
   color: white;
   text-align: center;
   vertical-align: middle;
-  line-height: 90px;
+  line-height: 40px;
   vertical-align: top;
 }
 
 .cellR {
-  width: 90px;
-  height: 90px;
+  width: 40px;
+  height: 40px;
   background-color: red;
   display: inline-block;
   border-style: ridge;
   color: white;
   text-align: center;
   vertical-align: middle;
-  line-height: 90px;
+  line-height: 40px;
   vertical-align: top;
   text-shadow:
 }
 
 .cellS {
-  width: 90px;
-  height: 90px;
+  width: 40px;
+  height: 40px;
   background-color: pink;
   display: inline-block;
   border-style: ridge;
   color: white;
   text-align: center;
   vertical-align: middle;
-  line-height: 90px;
+  line-height: 40px;
   vertical-align: top;
 }
 
@@ -152,36 +151,35 @@ body {
 }
 
 .tile {
-  width: 90px;
-  height: 90px;
+  width: 40px;
+  height: 40px;
   background-color: white;
   display: inline-block;
   color: black;
   text-align: center;
   vertical-align: middle;
-  line-height: 90px;
+  line-height: 40px;
   vertical-align: top;
 }
 
 .blank {
-  width: 90px;
-  height: 90px;
+  width: 40px;
+  height: 40px;
   background-color: white;
   display: inline-block;
   color: black;
   text-align: center;
   vertical-align: middle;
-  line-height: 90px;
+  line-height: 40px;
   vertical-align: top;
 }
 
 button {
-  min-width: 245px;
-  height: 100px;
+  min-width: 122px;
+  height: 50px;
   border-radius: 10px;
-  font-size: 80px;
+  font-size: 10px;
   background-color: white;
-  font-size: 40px;
   bottom: 60%;
   left: 10%;
   border-radius: 10px;
@@ -190,10 +188,10 @@ button {
 
 .player1 {
   position: absolute;
-  background-color: white;
-  height: 805px;
-  width: 500px;
-  top: 12%;
+  background-color: black;
+  height: 400px;
+  width: 250px;
+  top: 10%;
   bottom: 50%;
   left: 8%;
   border-radius: 10px;
@@ -213,10 +211,10 @@ button {
 
 .player2 {
   position: absolute;
-  background-color: white;
-  top: 12%;
-  height: 805px;
-  width: 500px;
+  background-color: black;
+  top: 10%;
+  height: 400px;
+  width: 250px;
   border-radius: 10px;
   bottom: 50%;
   left: 75%;
@@ -224,22 +222,23 @@ button {
 
 
 img {
- width: 500px;
- height: 500px;
+ border-radius: 10px;
+ width: 250px;
+ height: 250px;
 }
 
 #scoreplayer1container{
   background-color: #24fe9f;
-  height: 100px;
+  height: 50px;
   border-radius: 10px;
-  font-size: 80px;
+  font-size: 40px;
 }
 
 #scoreplayer2container{
   background-color: red;
-  height: 100px;
+  height: 50px;
   border-radius: 10px;
-  font-size: 80px;
+  font-size: 40px;
 }
 /*#hidetiles {
   bottom: 80%;
