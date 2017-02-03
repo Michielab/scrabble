@@ -9,9 +9,7 @@
 <div>
 <!-- <div id="titles"><div id="titlecontent">
 
-  	<p>Hi welcome to a new exciting game of Scrabble!!
-       The game rules are:hjdfkdshfkjsdhfkjhsdfkjshd
-     djsfkjdshfkjsdhfkjhfskjhd </p>
+  	<p><span id="tilesleft">Tiles left</span></p>
 
 </div></div> -->
 <div class="board"> </div>
@@ -32,8 +30,8 @@
   <button class="challange" id="challangePlayer2"  onclick="challangeTwo()" >Challenge</button>
 </div>
 <span id="tilesleft">Tiles left</span><br><br>
-<div ondrop="drop(event)" ondragover="allowDrop(event)" class="containerTileholder">
-  <div ondrop="drop(event)" ondragover="allowDrop(event)" class="tileholder"></div>
+<div ondrop="dropTiles(event)" ondragover="allowDrop(event)" class="containerTileholder">
+  <div ondrop="dropTiles(event)" ondragover="allowDrop(event)" class="tileholder"></div>
 </div>
 <div class="containerTileholder"><div class="tileholderPlayerTwo"></div></div>
 </div>

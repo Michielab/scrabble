@@ -16,8 +16,10 @@ var boardGrid = [
 ['B','n','n','n','R','n','n','G','n','n','R','n','n','n','B'],
 ];
 
+
 var t = true;
 var f = false;
+var b = false;
 
 var posGrid = [
 [f,f,f,f,f,f,f,f,f,f,f,f,f,f,f],
@@ -51,7 +53,7 @@ var posGrid = [
 for(var i = 0; i < boardGrid.length; i++) {
     var boardGrids = boardGrid[i];
     for(var j = 0; j < boardGrids.length; j++) {
-        var cellN = $("<div>").addClass('cellN').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)')
+        var cellN = $("<div>").addClass('cellN').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)');
         var cellG = $("<div>").addClass('cellG').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)').text('DL');
         var cellB = $("<div>").addClass('cellB').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)').text('TL');
         var cellY = $("<div>").addClass('cellY').attr('ondrop','drop(event)').attr('ondragover','allowDrop(event)').text('DW');
@@ -66,6 +68,8 @@ for(var i = 0; i < boardGrid.length; i++) {
       }
   }
 
+
+
 function Game (tiles) {
   this.tiles = [];
   this.blankTile = [];
@@ -78,7 +82,7 @@ var tiles = ['A','A','A','A','A','A','A','A','A','B','B',
 'F','F','G','G','G','H','H','I','I','I','I','I','I','I','I','I','K','L','L','L','L',
 'M','M','N','N','N','N','N','N','O','O','O','O','O','O','O','O','P','P','Q',
 'R','R','R','R','R','R','S','S','S','S','T','T','T','T','T','T','U','U','U','U',
-'V','V','W','W','X','Y','Y','Z','?','?'];
+'V','V','W','W','X','Y','Y','Z'];
 
 var blankTile = ['A','B','D','E','F','G','H','I','k','L','M','N','O','P','Q',
 'R','S','T','U','V','W','X','Y','Z'];
@@ -128,22 +132,6 @@ Game.prototype.RandomLetters = function(tiles) {
    return Math.floor(Math.random() * (10000)) + 1;
 };
 
-// Game.prototype.CreateTilesHolder = function() {
-//    var tilesOnBoard = $('.tileholder').children().length;
-//    for (var i = tilesOnBoard; i  < 7; i++) {
-//      if(Game.prototype.takeTile() === '?') {
-//         var newBlankTile = $("<span>").addClass('blank').attr( 'id', 'tilesnumber' +
-//         Game.prototype.RandomLetters() ).attr('draggable','true').attr('ondragstart','drag(event)');
-//         $('.tileholder').append(newBlankTile);
-//         $(newBlankTile).click(chooseLetter);
-//    }
-//      else {var newTile = $("<span>").addClass('tile').attr( 'id', 'tilesnummer' +
-//         Game.prototype.RandomLetters() ).attr('draggable','true').attr('ondragstart','drag(event)').text(Game.prototype.takeTile());
-//         $('.tileholder').append(newTile);
-//     }
-//   }
-// };
-
 Game.prototype.CreateTilesHolder = function() {
    var tilesOnBoard = $('.tileholder').children().length;
    for (var i = tilesOnBoard; i  < 7; i++) {
@@ -177,25 +165,6 @@ Game.prototype.tileholderPlayerTwo = function() {
 
 
 
-// Game.prototype.createTilesHolder2 = function() {
-//    var tilesOnBoard = $('.tileholderPlayerTwo').children().length;
-//    for (var i = tilesOnBoard; i  < 7; i++) {
-//      if(Game.prototype.takeTile() === '?') {
-//         var newBlankTile = $("<span>").addClass('blank').attr( 'id', 'tilesnumber' +
-//         Game.prototype.RandomLetters() ).attr('draggable','true').attr('ondragstart','drag(event)');
-//         $('.tileholderPlayerTwo').append(newBlankTile);
-//         $(newBlankTile).click(chooseLetter);
-//    }
-//      else {var newTile = $("<span>").addClass('tile').attr( 'id', 'tilesnummer' +
-//         Game.prototype.RandomLetters() ).attr('draggable','true').attr('ondragstart','drag(event)').text(Game.prototype.takeTile());
-//         $('.tileholderPlayerTwo').append(newTile);
-//     }
-//
-//   }
-//
-// };
-
-
 var chooseLetter = function(event) {
     var newLetter =  prompt('Choose letter');
     var newLetterCapital = newLetter.toUpperCase();
@@ -223,7 +192,10 @@ var chooseLetter = function(event) {
 
 var idParentDiv = '';
 var checkWordLeftToRightArray = [];
-var arrayRedCel = [];
+var redCel = false;
+var yellowcel = false;
+var starcel = false;
+
     wordsArray = [];
     function drop(ev) {
         ev.preventDefault();
@@ -237,26 +209,44 @@ var arrayRedCel = [];
         idParentDivSplit = idParentDiv.split('-');
          posGrid[parseInt(idParentDivSplit[0])][parseInt(idParentDivSplit[1])] = valueSpanElement;
          checkWordLeftToRightArray.push(idParentDivSplit);
-        if(ev.target.className === 'cellR') {arrayRedCel.push(3) ;console.log(arrayRedCel);}
+        if(ev.target.className === 'cellR') {redCel = true ;}
+        else if (ev.target.className === 'cellY') {yellowcel = true ;}
+        else if (ev.target.className === 'cellS') {starcel = true ;}
         else if (ev.target.className === 'cellG') {wordsArray.push(valueSpanElement) ;console.log(valueSpanElement);}
         else if (ev.target.className === 'cellB') {wordsArray.push(valueSpanElement);wordsArray.push(valueSpanElement);console.log(valueSpanElement);}
+      }
+
+
+function dropTiles (ev) {
+  ev.preventDefault();
+
+  var data = ev.dataTransfer.getData("dragged-id");
+  var valueSpanElement = ev.dataTransfer.getData("value");
+  idParentDiv = ev.target.id ;
+  ev.target.appendChild(document.getElementById(data));
 }
+
 
 wordCheck = '';
 
 function checkLeftToRight(){
-if(posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) + 1] === f) {return;} else {
-for(var i = 0; posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) + i] !== f; i++) {
+if(posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1])] ===
+posGrid[parseInt(checkWordLeftToRightArray[0][0])][14] ) {return;}
+else if(posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) + 1] === f) {return;} else {
+for(var i = 0; posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) + i] !== undefined && posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) + i] !== f; i++) {
           wordsArray.push(posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) + i]);
         }}
  console.log(wordsArray);
 // wordCheck = wordsArray.join('');
  return wordsArray;
  }
+// posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) + i] < posGrid[parseInt(checkWordLeftToRightArray[0][0])][15] &&
 
  function checkRighToLeft(){
- if(posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) - 1] === f) {return;} else {
- for(var i = 0; posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) - i] !== f; i++) {
+ if(posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1])] ===
+    posGrid[parseInt(checkWordLeftToRightArray[0][0])][0]) {return;}
+ else if(posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) - 1] === f) {return;} else {
+ for(var i = 0; posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) - i] !== undefined && posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) - i] !== f; i++) {
            wordsArray.push(posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) - i]);
          }}
  // wordCheck = wordsArray.join('');
@@ -264,9 +254,13 @@ for(var i = 0; posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(check
   return wordsArray;
   }
 
+// posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1]) - i] === posGrid[parseInt(checkWordLeftToRightArray[0][0])][0] ||
+
 function topToBottom(){
-if(posGrid[parseInt(checkWordLeftToRightArray[0][0]) + 1][parseInt(checkWordLeftToRightArray[0][1])] === f) {return;} else {
-for(var i = 0; posGrid[parseInt(checkWordLeftToRightArray[0][0]) + i][parseInt(checkWordLeftToRightArray[0][1])] !== f; i++) {
+if(posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1])] ===
+    posGrid[14][parseInt(checkWordLeftToRightArray[0][1])]) {return;}
+else if(posGrid[parseInt(checkWordLeftToRightArray[0][0]) + 1][parseInt(checkWordLeftToRightArray[0][1])] === f) {return;} else {
+for(var i = 0; posGrid[parseInt(checkWordLeftToRightArray[0][0]) + i] !== undefined && posGrid[parseInt(checkWordLeftToRightArray[0][0]) + i][parseInt(checkWordLeftToRightArray[0][1])] !== f; i++) {
           wordsArray.push(posGrid[parseInt(checkWordLeftToRightArray[0][0]) + i][parseInt(checkWordLeftToRightArray[0][1])]);
         } }
         wordCheck = wordsArray.join('');
@@ -277,8 +271,10 @@ for(var i = 0; posGrid[parseInt(checkWordLeftToRightArray[0][0]) + i][parseInt(c
 }
 
 function bottomToTop(){
-if(posGrid[parseInt(checkWordLeftToRightArray[0][0]) - 1][parseInt(checkWordLeftToRightArray[0][1])] === f) {return;} else {
-for(var i = 0; posGrid[parseInt(checkWordLeftToRightArray[0][0]) - i][parseInt(checkWordLeftToRightArray[0][1])] !== f; i++) {
+if(posGrid[parseInt(checkWordLeftToRightArray[0][0])][parseInt(checkWordLeftToRightArray[0][1])] ===
+  posGrid[0][parseInt(checkWordLeftToRightArray[0][1])]) {return;}
+else if(posGrid[parseInt(checkWordLeftToRightArray[0][0]) - 1][parseInt(checkWordLeftToRightArray[0][1])] === f) {return;} else {
+for(var i = 0; posGrid[parseInt(checkWordLeftToRightArray[0][0]) - i] !== undefined && posGrid[parseInt(checkWordLeftToRightArray[0][0]) - i][parseInt(checkWordLeftToRightArray[0][1])] !== f; i++) {
           wordsArray.push(posGrid[parseInt(checkWordLeftToRightArray[0][0]) - i][parseInt(checkWordLeftToRightArray[0][1])]);
         } }
         wordCheck = wordsArray.join('');
@@ -287,7 +283,6 @@ for(var i = 0; posGrid[parseInt(checkWordLeftToRightArray[0][0]) - i][parseInt(c
  // }
 
 }
-
 
 function checkScore() {
   checkLeftToRight();
@@ -335,6 +330,8 @@ for(var j = 0; j < wordsArray.length; j++) {
 } else if(wordsArray[j] === 'V') {
     score += 4;
 } else if(wordsArray[j] === 'W') {
+    score += 4;
+} else if(wordsArray[j] === 'Y') {
     score += 4;
 } else if(wordsArray[j] === 'K') {
     score += 5;
@@ -401,6 +398,8 @@ for(var j = 0; j < wordsArray.length; j++) {
     score += 4;
 } else if(wordsArray[j] === 'W') {
     score += 4;
+} else if(wordsArray[j] === 'Y') {
+        score += 4;
 } else if(wordsArray[j] === 'K') {
     score += 5;
 } else if(wordsArray[j] === 'J') {
@@ -420,19 +419,46 @@ return score;
 }
 
 
-
+totalScorePlayerOne = 0;
 function pointsToScore(){
+
 totalScorePlayerOne = checkScore();
-// if (arrayRedCel.length === 1) {return totalScorePlayerOne * 3;}
+if (yellowcel === true) {
+  totalScorePlayerOne *= 2;
+}
+if (redCel === true) {
+  totalScorePlayerOne *= 3;
+}
+if (starcel === true) {
+  totalScorePlayerOne *= 2;
+}
 pointsPlayerOne = parseInt(document.getElementById('scoreplayer1').textContent) + totalScorePlayerOne;
 document.getElementById('scoreplayer1').innerHTML = pointsPlayerOne;
+redCel = false;
+yellowcel = false;
+starcel = false;
+$( ".tileholder" ).hide("slide", {direction: "left" }, 1000);
 return pointsPlayerOne;
 }
 
+totalScorePlayerTwo =0;
 function pointsToScorePlayerTwo(){
-var totalScorePlayerTwo = checkScorePlayerTwo();
+ totalScorePlayerTwo = checkScorePlayerTwo();
+if (yellowcel === true) {
+  totalScorePlayerTwo *= 2;
+}
+if (redCel === true) {
+  totalScorePlayerTwo *= 3;
+}
+if (starcel === true) {
+  totalScorePlayerTwo *= 2;
+}
 var pointsPlayerTwo = parseInt(document.getElementById('scoreplayer2').textContent) + totalScorePlayerTwo;
 document.getElementById('scoreplayer2').innerHTML = pointsPlayerTwo;
+redCel = false;
+yellowcel = false;
+starcel = false;
+$( ".tileholderPlayerTwo" ).hide("slide", {direction: "right" }, 1000);
 return pointsPlayerTwo;
 }
 
@@ -441,11 +467,13 @@ function challange(){
   var scoreNewPlayerOne = parseInt(document.getElementById('scoreplayer1').textContent);
       var wordCorrect =  prompt('Is the word correct?');
       if(wordCorrect === 'no') {
-  document.getElementById('scoreplayer2').innerHTML =  scoreNew - score;
-  document.getElementById('scoreplayer1').innerHTML =  scoreNewPlayerOne + score;}
+  document.getElementById('scoreplayer2').innerHTML =  scoreNew - totalScorePlayerTwo;
+  document.getElementById('scoreplayer1').innerHTML =  scoreNewPlayerOne + totalScorePlayerTwo;}
   else if (wordCorrect === 'yes') {
-document.getElementById('scoreplayer1').innerHTML =  scoreNew - score;
+document.getElementById('scoreplayer1').innerHTML =  scoreNew - totalScorePlayerTwo;
+
 }
+totalScorePlayerTwo = 0;
 }
 
   function challangeTwo(){
@@ -453,10 +481,12 @@ document.getElementById('scoreplayer1').innerHTML =  scoreNew - score;
     var scoreNewTwo = parseInt(document.getElementById('scoreplayer2').textContent);
         var wordCorrect =  prompt('Is the word correct?');
         if(wordCorrect === 'no') {
-    document.getElementById('scoreplayer1').innerHTML =  scoreNew - score;
-    document.getElementById('scoreplayer2').innerHTML = scoreNewTwo + score;}
+    document.getElementById('scoreplayer1').innerHTML =  scoreNew - totalScorePlayerOne;
+    document.getElementById('scoreplayer2').innerHTML = scoreNewTwo + totalScorePlayerOne;}
      else if (wordCorrect === 'yes') {
-  document.getElementById('scoreplayer2').innerHTML =  scoreNewTwo - score;}}
+  document.getElementById('scoreplayer2').innerHTML =  scoreNewTwo - totalScorePlayerOne;}
+totalScorePlayerOne = 0;
+}
 
 // function onlyUnique(value, index, self) {
 //     return self.indexOf(value) === index;

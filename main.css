@@ -11,7 +11,29 @@ body {
   margin: 0 auto;
   font-size: 30px;
 }
-#titles
+
+/*#title {
+ font-size: 100px;
+ position: fixed;
+ left: 800px;
+ right: 800px;
+}*/
+
+/*#title
+{
+  font-size: 100px;
+  position: fixed;
+  left: 800px;
+  right: 800px;
+	font-weight: bold;
+	text-align: justify;
+	overflow: hidden;
+	transform-origin: 50% 100%;
+	transform: perspective(300px) rotateX(25deg);
+}*/
+
+
+/*#titles
 {
 	position: absolute;
 	width: 18em;
@@ -19,15 +41,15 @@ body {
 	bottom: 0;
 	left: 50%;
 	margin-left: -9em;
-	font-size: 300px;
+	font-size: 350%;
 	font-weight: bold;
 	text-align: justify;
 	overflow: hidden;
 	transform-origin: 50% 100%;
 	transform: perspective(300px) rotateX(25deg);
-}
+}*/
 
-#titles:after
+/*#title:after
 {
 	position: absolute;
 	content: ' ';
@@ -37,7 +59,7 @@ body {
 	bottom: 60%;
 	background-image: linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);
 	pointer-events: none;
-}
+}*/
 
 
 
@@ -167,18 +189,18 @@ button {
 }
 
 .player1 {
-  position: fixed;
+  position: absolute;
   background-color: white;
   height: 805px;
   width: 500px;
-  top: 10%;
+  top: 12%;
   bottom: 50%;
   left: 8%;
   border-radius: 10px;
 
 }
 
-.player2 {
+/*.player2 {
   position: fixed;
   background-color: white;
   top: 10%;
@@ -187,7 +209,19 @@ button {
   border-radius: 10px;
   bottom: 50%;
   left: 75%;
+}*/
+
+.player2 {
+  position: absolute;
+  background-color: white;
+  top: 12%;
+  height: 805px;
+  width: 500px;
+  border-radius: 10px;
+  bottom: 50%;
+  left: 75%;
 }
+
 
 img {
  width: 500px;
