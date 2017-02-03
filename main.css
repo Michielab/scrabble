@@ -1,6 +1,6 @@
 body {
   background-color: black;
-
+  
 }
 
 .board {
@@ -193,7 +193,7 @@ button {
   width: 250px;
   top: 10%;
   bottom: 50%;
-  left: 8%;
+  left: 10%;
   border-radius: 10px;
 
 }
