@@ -1,3 +1,41 @@
+
+// $(document).ready(function(){
+//   $( ".yesno" ).hide("fast");});
+
+  //
+  // function fnOpenNormalDialog() {
+  //     $(".challange");
+  //
+  //     // Define the Dialog and its properties.
+  //     $(".challange").dialog({
+  //         resizable: false,
+  //         modal: true,
+  //         title: "Is the word correct?",
+  //         height: 250,
+  //         width: 400,
+  //         buttons: {
+  //             "Yes": function () {
+  //                 $(this).dialog('close');
+  //                 callback(true);
+  //             },
+  //                 "No": function () {
+  //                 $(this).dialog('close');
+  //                 callback(false);
+  //             }
+  //         }
+  //     });
+  // }
+  //
+  // $('.challange').click(fnOpenNormalDialog);
+  //
+  // function callback(value) {
+  //     if (value) {
+  //         alert("Confirmed");
+  //     } else {
+  //         alert("Rejected");
+  //     }
+  // }
+
 var boardGrid = [
 ['B','n','n','n','R','n','n','G','n','n','R','n','n','n','B',],
 ['n','G','n','n','n','B','n','n','n','B','n','n','n','G','n'],
@@ -37,7 +75,6 @@ var posGrid = [
 [f,f,f,f,f,f,f,f,f,f,f,f,f,f,f],
 [f,f,f,f,f,f,f,f,f,f,f,f,f,f,f],
 [f,f,f,f,f,f,f,f,f,f,f,f,f,f,f],
-
 ];
 
 // var checkWord = require('check-word');
@@ -49,6 +86,7 @@ var posGrid = [
 // 'Y' = 'double word cell';
 // 'R' = 'tripple word cell';
 // 'S' = 'start point';
+
 
 for(var i = 0; i < boardGrid.length; i++) {
     var boardGrids = boardGrid[i];
@@ -179,6 +217,9 @@ var chooseLetter = function(event) {
       ev.preventDefault();}}
       else {ev.preventDefault()}}}}
 // ev.preventDefault();}
+
+
+
 
     function drag(ev) {
         ev.dataTransfer.setData("dragged-id", ev.target.id);
@@ -437,7 +478,7 @@ document.getElementById('scoreplayer1').innerHTML = pointsPlayerOne;
 redCel = false;
 yellowcel = false;
 starcel = false;
-$( ".tileholder" ).hide("slide", {direction: "left" }, 1000);
+$( ".tileholder" ).toggle("slow");
 return pointsPlayerOne;
 }
 
@@ -458,11 +499,12 @@ document.getElementById('scoreplayer2').innerHTML = pointsPlayerTwo;
 redCel = false;
 yellowcel = false;
 starcel = false;
-$( ".tileholderPlayerTwo" ).hide("slide", {direction: "right" }, 1000);
+  $( ".tileholderPlayerTwo" ).toggle("slow");
 return pointsPlayerTwo;
 }
 
 function challange(){
+  if(totalScorePlayerTwo === 0) {return;}
   var scoreNew = parseInt(document.getElementById('scoreplayer2').textContent);
   var scoreNewPlayerOne = parseInt(document.getElementById('scoreplayer1').textContent);
       var wordCorrect =  prompt('Is the word correct?');
@@ -477,6 +519,7 @@ totalScorePlayerTwo = 0;
 }
 
   function challangeTwo(){
+    if(totalScorePlayerOne === 0) {return;}
     var scoreNew = parseInt(document.getElementById('scoreplayer1').textContent);
     var scoreNewTwo = parseInt(document.getElementById('scoreplayer2').textContent);
         var wordCorrect =  prompt('Is the word correct?');

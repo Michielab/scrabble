@@ -1,43 +1,43 @@
-//
-// if(document.getElementById(parseInt(idParentDiv) - 1).hasChildNodes()){
-//       for(var i = parseInt(idParentDiv); document.getElementById(i).hasChildNodes() ; i++) {
-//         var textContent = document.getElementById(parseInt(i)).firstChild.textContent;
-//
-//         wordsCheck.push(document.getElementById(parseInt(i)).firstChild.id + textContent);
 
-        // wordsCheck[i].push(data[i] + valueSpanElement[i]); wordsCheck.reverse();
-      // }
-      // checkWordLeftToRight(); i === document.getElementById(parseInt(idParentDiv) + 1).hasChildNodes()
-      // valueRightSpanElement = document.getElementById(parseInt(idParentDiv) + 1).firstChild.id +
-      // document.getElementById(parseInt(idParentDiv) + 1).firstChild.textContent;
-      // wordsCheck.push(data + valueSpanElement); wordsCheck.push(valueRightSpanElement);
+if(document.getElementById(parseInt(idParentDiv) - 1).hasChildNodes()){
+      for(var i = parseInt(idParentDiv); document.getElementById(i).hasChildNodes() ; i++) {
+        var textContent = document.getElementById(parseInt(i)).firstChild.textContent;
+
+        wordsCheck.push(document.getElementById(parseInt(i)).firstChild.id + textContent);
+
+        wordsCheck[i].push(data[i] + valueSpanElement[i]); wordsCheck.reverse();
+      }
+      checkWordLeftToRight(); i === document.getElementById(parseInt(idParentDiv) + 1).hasChildNodes()
+      valueRightSpanElement = document.getElementById(parseInt(idParentDiv) + 1).firstChild.id +
+      document.getElementById(parseInt(idParentDiv) + 1).firstChild.textContent;
+      wordsCheck.push(data + valueSpanElement); wordsCheck.push(valueRightSpanElement);
+ wordsCheck.push(data + valueSpanElement + valueRightSpanElement);
+console.log(document.getElementById(parseInt(idParentDiv) + 1));
+}
+if(document.getElementById(parseInt(idParentDiv) - 1).hasChildNodes()){
+valueLeftSpanElement = document.getElementById(parseInt(idParentDiv) - 1).firstChild.id +
+document.getElementById(parseInt(idParentDiv) - 1).firstChild.textContent;
+wordsCheck.unshift(valueLeftSpanElement);  wordsCheck.unshift(data + valueSpanElement);
+
 //  wordsCheck.push(data + valueSpanElement + valueRightSpanElement);
 // console.log(document.getElementById(parseInt(idParentDiv) + 1));
-// }
-// if(document.getElementById(parseInt(idParentDiv) - 1).hasChildNodes()){
-// valueLeftSpanElement = document.getElementById(parseInt(idParentDiv) - 1).firstChild.id +
-// document.getElementById(parseInt(idParentDiv) - 1).firstChild.textContent;
-// wordsCheck.unshift(valueLeftSpanElement);  wordsCheck.unshift(data + valueSpanElement);
-//
-// //  wordsCheck.push(data + valueSpanElement + valueRightSpanElement);
-// // console.log(document.getElementById(parseInt(idParentDiv) + 1));
-// }
-  // wordsCheck.reverse();
-  // wordsCheck.push(data + valueSpanElement);
-// wordsCheck.push(data + valueSpanElement + valueRightSpanElement);
-// wordsCheck.push(data + valueSpanElement);
+}
+  wordsCheck.reverse();
+  wordsCheck.push(data + valueSpanElement);
+wordsCheck.push(data + valueSpanElement + valueRightSpanElement);
+wordsCheck.push(data + valueSpanElement);
 
-// }
+}
 
 
-// function checkWordLeftToRight(){
-//   for(var i = 0; i < checkWordLeftToRightArray.length ; i++) {
-//  if(document.getElementById(parseInt(checkWordLeftToRightArray[i]) -1).hasChildNodes() === false);{
-//   console.log(document.getElementById(parseInt(checkWordLeftToRightArray)).firstChild.textContent);
-//  }
+function checkWordLeftToRight(){
+  for(var i = 0; i < checkWordLeftToRightArray.length ; i++) {
+ if(document.getElementById(parseInt(checkWordLeftToRightArray[i]) -1).hasChildNodes() === false);{
+  console.log(document.getElementById(parseInt(checkWordLeftToRightArray)).firstChild.textContent);
+ }
 
 
-// }
+}
 
 
 //   if(document.getElementById(parseInt(checkWordLeftToRightArray[i]) -1).hasChildNodes()); {
