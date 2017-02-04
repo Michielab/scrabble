@@ -97,9 +97,6 @@ Game.prototype.drawTileToStart = function() {
 };
 
 
-// $( "#hidetiles" ).click(function() {
-//   $( ".tileholder" ).toggle("slide", {direction: "left" }, 1000);
-// });
 
 $( "#hidetiles" ).click(function() {
   $( ".tileholder" ).toggle("slide");
@@ -107,7 +104,7 @@ $( "#hidetiles" ).click(function() {
 });
 
 $( "#hidetilesplayer2" ).click(function() {
-  $( ".tileholderPlayerTwo" ).toggle("slide", {direction: "right" }, 1000);
+  $( ".tileholderPlayerTwo" ).toggle("slide");
 });
 
 Game.prototype.shuffleTiles = function(array) {
