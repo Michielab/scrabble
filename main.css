@@ -1,6 +1,6 @@
 body {
   background-color: black;
-  
+
 }
 
 .board {
@@ -177,12 +177,11 @@ body {
 button {
   min-width: 122px;
   height: 50px;
-  border-radius: 10px;
   font-size: 10px;
   background-color: white;
   bottom: 60%;
   left: 10%;
-  border-radius: 10px;
+
 
 }
 
@@ -193,8 +192,7 @@ button {
   width: 250px;
   top: 10%;
   bottom: 50%;
-  left: 10%;
-  border-radius: 10px;
+  left: 3%;
 
 }
 
@@ -215,14 +213,14 @@ button {
   top: 10%;
   height: 400px;
   width: 250px;
-  border-radius: 10px;
+
   bottom: 50%;
-  left: 75%;
+  left: 80%;
 }
 
 
 img {
- border-radius: 10px;
+
  width: 250px;
  height: 250px;
 }
@@ -230,14 +228,14 @@ img {
 #scoreplayer1container{
   background-color: #24fe9f;
   height: 50px;
-  border-radius: 10px;
+
   font-size: 40px;
 }
 
 #scoreplayer2container{
   background-color: red;
   height: 50px;
-  border-radius: 10px;
+
   font-size: 40px;
 }
 /*#hidetiles {
