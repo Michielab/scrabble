@@ -99,12 +99,11 @@ Game.prototype.drawTileToStart = function() {
 
 
 $( "#hidetiles" ).click(function() {
-  $( ".tileholder" ).toggle("slide");
-
+  $( ".tileholder" ).toggle("slow");
 });
 
 $( "#hidetilesplayer2" ).click(function() {
-  $( ".tileholderPlayerTwo" ).toggle("slide");
+  $( ".tileholderPlayerTwo" ).toggle("slow");
 });
 
 Game.prototype.shuffleTiles = function(array) {
