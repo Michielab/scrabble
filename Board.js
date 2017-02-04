@@ -97,7 +97,6 @@ Game.prototype.drawTileToStart = function() {
 };
 
 
-
 $( "#hidetiles" ).click(function() {
   $( ".tileholder" ).toggle("slow");
 });
